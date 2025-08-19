@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kabumm"
+version = "0.0.1"
+description = "A bomb defusal game"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+keywords = ["openscad", "stl"]
+authors = [
+  { name = "hephaisto" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    # port expander
+    "gpiod >= 2.0.2",
+    # segment display
+    "adafruit-circuitpython-ht16k33",
+    # neopixel
+    "adafruit-circuitpython-neopixel",
+    "adafruit-blinka",
+    "rpi_ws281x",
+]
+
+[project.urls]
+source = "https://github.com/hackffm/kabumm"
+
+[project.scripts]
+kabumm = "kabumm.run:main"
+
+

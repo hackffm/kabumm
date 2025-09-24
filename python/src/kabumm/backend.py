@@ -23,11 +23,17 @@ class RaspiBackend:
 
         self.gpio_request = gpio_request
         self.port_number_of_pixels = port_number_of_pixels
+        self.num_leds = num_wires_and_pixels
+        self.num_wires = num_wires_and_pixels
 
 
     def write(self, string):
         logger.info("display %s", string)
-        self.display.print(string)
+        try:
+            self.display.print(string)
+        except OSError as e:
+            logger.warning("error while writing to display: %s", e)
+            self.display.print(string)
 
     def set_pixels(self, values):
         logger.info("set pixels to %s", values)

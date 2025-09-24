@@ -1,7 +1,10 @@
 import argparse
 import logging
+import time
+
 
 from kabumm.backend import make_backend
+from kabumm.game import Game
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -16,8 +19,9 @@ def parse_args():
 def main():
     args = parse_args()
     with make_backend(num_wires_and_pixels=args.number) as backend:
-        backend.write("BUMM")
         backend.set_pixels([(i, 0, 0) for i in range(args.number)])
-        for i in range(10):
-            print(backend.is_cut())
+        game = Game(backend)
+        while not game.finished:
+            game.tick()
+            time.sleep(0.1)
 

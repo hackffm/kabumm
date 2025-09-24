@@ -19,6 +19,7 @@ classifiers = [
 dependencies = [
     # port expander
     "gpiod >= 2.0.2",
+    "RPi.GPIO",
     # segment display
     "adafruit-circuitpython-ht16k33",
     # neopixel
